@@ -6,6 +6,14 @@ class Pokemon(models.Model):
     title_ru = models.CharField(max_length=200,
                                 verbose_name='имя покемона на русском',
                                 null=True)
+    title_en = models.CharField(null=True,
+                                blank=True,
+                                max_length=200,
+                                verbose_name='имя покемона на английском')
+    title_jp = models.CharField(null=True,
+                                blank=True,
+                                max_length=200,
+                                verbose_name='имя покемона на японском')
     picture = models.ImageField(upload_to='poc_pictures/',
                                 blank=True,
                                 null=True)
