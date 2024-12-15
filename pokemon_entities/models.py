@@ -9,6 +9,9 @@ class Pokemon(models.Model):
     picture = models.ImageField(upload_to='poc_pictures/',
                                 blank=True,
                                 null=True)
+    description = models.TextField(null=True,
+                                   blank=True,
+                                   verbose_name="описание")
 
     def __str__(self):
         return self.title_ru
