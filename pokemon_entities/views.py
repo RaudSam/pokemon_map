@@ -31,7 +31,6 @@ def show_all_pokemons(request):
 
     local_time = localtime()
 
-    pokemons = Pokemon.objects.all()
     pokemon_entities = PokemonEntity.objects.filter(
         disappear_at__gt=local_time,
         appear_at__lt=local_time
@@ -48,6 +47,8 @@ def show_all_pokemons(request):
         add_pokemon(folium_map, entity.lat, entity.lon, image_url)
 
     pokemons_on_page = []
+
+    pokemons = Pokemon.objects.all()
 
     for pokemon in pokemons:
 
@@ -104,7 +105,7 @@ def show_pokemon(request, pokemon_id):
             'title_en': pokemon.previous_evolution.title_en,
             'title_jp': pokemon.previous_evolution.title_jp
         }
-    next_evolution = pokemon.next_evolutions.all().first()
+    next_evolution = pokemon.next_evolutions.first()
     if next_evolution:
         next_evolution = {
             'pokemon_id': next_evolution.id,
